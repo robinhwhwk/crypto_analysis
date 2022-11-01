@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "Product Reviewer",
+    "version": "1.0",
+  
+    "action": {
+        "default_icon": {              
+            "16" : "/images/review_icon16.png",
+            "32" : "/images/review_icon32.png",
+            "64" : "/images/review_icon64.png",
+            "128" : "/images/review_icon128.png"
+        },
+        "default_popup": "popup.html"
+    },
+    
+    "description": "Review products on amazon.com",
+    "icons": {
+        "16" : "/images/review_icon16.png",
+        "32" : "/images/review_icon32.png",
+        "64" : "/images/review_icon64.png",
+        "128" : "/images/review_icon128.png"
+    },
+    "background": {
+        "service_worker":"background.js"
+    },
+    "author": "Robin Kim",
+    "permissions": [
+		"tabs",
+		"background",
+        "identity",
+        "notifications"
+	],
+    "externally_connectable": {
+        "ids": ["gijfhfbncjbjkfkbmhilplahhdbbljdn"],
+        "matches": ["http://127.0.0.1:8000/*"],
+        "accepts_tls_channel_id": false
+      },
+      "content_scripts": [
+        { "matches": ["<all_urls>"], "js": ["popup.js"] }
+      ]
+    
+  }

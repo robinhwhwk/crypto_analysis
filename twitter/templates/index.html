@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>Cryptocurrency Sentiment Analyzer</h1>
+    <h3>Enter Product Name</h3>
+    <form action="{% url 'search' %}" method="get" class="center">
+      Coin Name:<br />
+      <input name="query" type="text" placeholder="Search..." />
+      <br /><br />
+      <input type="submit" value="Search" />
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Rating (-100 to 100)</td>
+          <td>Positive</td>
+          <td>Negative</td>
+          <td>Neutral</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ rating }}</td>
+          <td>{{ positive }}%</td>
+          <td>{{ negative }}%</td>
+          <td>{{ neutral }}%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+        <div id="piechart">{{ piechart }}</div>
+    </div>  
+    {% if wordcloud is not None %}
+    <div id="wordcloud"><img src="{{ wordcloud }}" alt=""></div>
+        {% endif %}
+    {% if pricechart is not None %}
+    <div id="pricechart"><img src="{{ pricechart }}" alt=""></div>
+      {% endif %}
+    <script>
+        function htmlDecode(input) {
+          var doc = new DOMParser().parseFromString(input, "text/html");
+          return doc.documentElement.textContent;
+        }
+        document.getElementById("piechart").innerHTML = htmlDecode(document.getElementById("piechart").innerHTML)
+      </script>
+  </body>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</html>

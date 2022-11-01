@@ -1,0 +1,13 @@
+1. Look up Cryptocurrency names and their twitter score
+2. display pie charts of pos/neg/neutral opinion towards the topic
+3. display a word cloud of words associated with the topic
+4. compare multiple currencies and their ratings
+5. Scale the tweets' values based on number of likes
+6. Make a histogram keeping track of change in popularity of a topic
+7. Get historical coin trend from CoinGecko API
+
+Get line graph of sentiment by day/hour in the past 7 days
+
+1. get a big amount of tweets, say 1000
+2. separate the tweets into date published
+3. get line graphs based on user selection of day/hour
